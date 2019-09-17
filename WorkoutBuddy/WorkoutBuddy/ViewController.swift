@@ -23,36 +23,53 @@ class ViewController: UIViewController {
     @IBOutlet weak var restTimeLabel: UILabel!
     @IBOutlet weak var restTimeSlider: UISlider!
     
+    @IBOutlet weak var startButton: UIButton!
+    
+    var steps = 5
+    var time = 10
+    var restTime = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        //Labels
         self.instructions1Label.text = "Number of exercises"
-        self.stepsLabel.text = "5"
+        self.stepsLabel.text = "\(GlobalConstants.defaultSteps)"
         self.stepsLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
         
         self.instructions2Label.text = "Time for each exercise"
-        self.timeLabel.text = "10 sec"
+        self.timeLabel.text = "\(GlobalConstants.minTimePerStep) sec"
         self.timeLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
         
         self.instructions3Label.text = "Time between each exercise"
-        self.restTimeLabel.text = "0 sec"
+        self.restTimeLabel.text = "\(GlobalConstants.minRestTime) sec"
         self.restTimeLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
+        
+        //Sliders
+        self.timeSlider.minimumValue = Float(GlobalConstants.minTimePerStep)
+        self.timeSlider.maximumValue = Float(GlobalConstants.maxTimePerStep)
+        
+        self.restTimeSlider.minimumValue = Float(GlobalConstants.minRestTime)
+        self.restTimeSlider.maximumValue = Float(GlobalConstants.maxRestTime)
+        
+        //Buttons
+        self.startButton.setTitle("Start", for: .normal)
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        let steps = Int(sender.value)
+        steps = Int(sender.value)
         stepsLabel.text = "\(steps)"
     }
     
     @IBAction func timeSliderValueChanged(_ sender: UISlider) {
-        let time = Int(sender.value)
+        time = Int(sender.value)
         timeLabel.text = "\(time) sec"
     }
-    
+
     @IBAction func restTimeSliderValueChanged(_ sender: UISlider) {
-        let restTime = Int(sender.value)
-        restTimeLabel.text = "\(restTime)"
+        restTime = Int(sender.value)
+        restTimeLabel.text = "\(restTime) sec"
     }
     
 }

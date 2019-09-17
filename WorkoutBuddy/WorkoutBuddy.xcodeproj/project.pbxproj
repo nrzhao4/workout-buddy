@@ -13,6 +13,8 @@
 		57B8B3AC232F10B500401E81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57B8B3AB232F10B500401E81 /* Assets.xcassets */; };
 		57B8B3AF232F10B500401E81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57B8B3AD232F10B500401E81 /* LaunchScreen.storyboard */; };
 		57B8B3BA232F10B500401E81 /* WorkoutBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3B9232F10B500401E81 /* WorkoutBuddyTests.swift */; };
+		57B8B3C523313FB700401E81 /* WorkoutUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */; };
+		57B8B3C7233142E700401E81 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3C6233142E700401E81 /* Struct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		57B8B3B5232F10B500401E81 /* WorkoutBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B8B3B9232F10B500401E81 /* WorkoutBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutBuddyTests.swift; sourceTree = "<group>"; };
 		57B8B3BB232F10B500401E81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutUserInput.swift; sourceTree = "<group>"; };
+		57B8B3C6233142E700401E81 /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			children = (
 				57B8B3A4232F10B400401E81 /* AppDelegate.swift */,
 				57B8B3A6232F10B400401E81 /* ViewController.swift */,
+				57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */,
+				57B8B3C6233142E700401E81 /* Struct.swift */,
 				57B8B3A8232F10B400401E81 /* Main.storyboard */,
 				57B8B3AB232F10B500401E81 /* Assets.xcassets */,
 				57B8B3AD232F10B500401E81 /* LaunchScreen.storyboard */,
@@ -197,6 +203,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57B8B3C7233142E700401E81 /* Struct.swift in Sources */,
+				57B8B3C523313FB700401E81 /* WorkoutUserInput.swift in Sources */,
 				57B8B3A7232F10B400401E81 /* ViewController.swift in Sources */,
 				57B8B3A5232F10B400401E81 /* AppDelegate.swift in Sources */,
 			);
