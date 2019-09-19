@@ -15,11 +15,12 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var stepLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
     
     //From user input
-    var timerTime = 5
-    var steps = 2
-    var restTime = 2
+    var steps = 0
+    var timerTime = 0
+    var restTime = 0
     
     //Timer
     var stepsComplete = 0
@@ -39,6 +40,10 @@ class TimerViewController: UIViewController {
         
         self.pauseButton.setTitle("Pause", for: .normal)
         
+        self.doneButton.setTitle("Done", for: .normal)
+        self.doneButton.isEnabled = false
+        self.doneButton.isHidden = true
+        
         runTimer()
 
     }
@@ -53,8 +58,7 @@ class TimerViewController: UIViewController {
     
     @objc func updateTimer() {
         seconds -= 1
-        updateStepLabel()
-        timerLabel.text = "00:0\(seconds)"
+        updateLabel()
         
         if seconds == 0 {
             if stepsComplete == steps {
@@ -66,11 +70,18 @@ class TimerViewController: UIViewController {
         }
     }
     
-    func updateStepLabel() {
+    func updateLabel() {
         if (timerNumber == 1) {
+            timerLabel.text = "00:0\(seconds)"
             return
         }
-        else if (restTime > 0) && (timerNumber % 2 != 0) {
+        if (seconds >= 10) {
+            timerLabel.text = "00:\(seconds)"
+        } else {
+            timerLabel.text = "00:0\(seconds)"
+        }
+        
+        if (restTime > 0) && (timerNumber % 2 != 0) {
             stepLabel.text = "Next exercise starting in"
         }
         else {
@@ -80,11 +91,11 @@ class TimerViewController: UIViewController {
     
     func timerDone() {
         if (restTime > 0) && (timerNumber % 2 == 0) {
-            seconds = restTime
+            seconds = restTime + 1
             timerNumber += 1
         }
         else {
-            seconds = timerTime
+            seconds = timerTime + 1
             timerNumber += 1
             stepsComplete += 1
         }
@@ -94,9 +105,13 @@ class TimerViewController: UIViewController {
         timer.invalidate()
         isTimerRunning = false
         
-        pauseButton.setTitle("Create another workout", for: .normal)
         stepLabel.text = "Workout complete"
         timerLabel.isHidden = true
+        
+        pauseButton.isEnabled = false
+        pauseButton.isHidden = true
+        doneButton.isEnabled = true
+        doneButton.isHidden = false
         
     }
     
@@ -105,12 +120,12 @@ class TimerViewController: UIViewController {
         if isTimerRunning == true {
             timer.invalidate()
             isTimerRunning = false
-            print("pause timer")
+            pauseButton.setTitle("Resume", for: .normal)
         }
         
         else if isTimerRunning == false && stepsComplete < steps {
             runTimer()
-            print("resume timer")
+            pauseButton.setTitle("Pause", for: .normal)
         }
     }
     

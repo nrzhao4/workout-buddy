@@ -36,18 +36,24 @@ class ViewController: UIViewController {
         print("viewDidLoad")
         
         //Labels
+        self.instructions1Label.font = UIFont.boldSystemFont(ofSize: 16.0)
         self.instructions1Label.text = "Number of exercises"
-        self.stepsLabel.text = "\(GlobalConstants.defaultSteps)"
+        
         self.stepsLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-        
+        self.stepsLabel.text = "\(GlobalConstants.defaultSteps)"
+       
+        self.instructions2Label.font = UIFont.boldSystemFont(ofSize: 16.0)
         self.instructions2Label.text = "Time for each exercise"
-        self.timeLabel.text = "\(GlobalConstants.minTimePerStep) sec"
+        
         self.timeLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-        
+        self.timeLabel.text = "\(GlobalConstants.minTimePerStep) sec"
+       
+        self.instructions3Label.font = UIFont.boldSystemFont(ofSize: 16.0)
         self.instructions3Label.text = "Time between each exercise"
-        self.restTimeLabel.text = "\(GlobalConstants.minRestTime) sec"
-        self.restTimeLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
         
+        self.restTimeLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
+        self.restTimeLabel.text = "\(GlobalConstants.minRestTime) sec"
+       
         //Sliders
         self.timeSlider.minimumValue = Float(GlobalConstants.minTimePerStep)
         self.timeSlider.maximumValue = Float(GlobalConstants.maxTimePerStep)
@@ -76,6 +82,14 @@ class ViewController: UIViewController {
     
     @IBAction func startButtonPressed(_ sender: UIButton) {
     
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let workout = segue.destination as? TimerViewController {
+            workout.steps = steps
+            workout.timerTime = time
+            workout.restTime = restTime
+        }
     }
 }
 
