@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("viewDidLoad")
+        
         //Labels
         self.instructions1Label.text = "Number of exercises"
         self.stepsLabel.text = "\(GlobalConstants.defaultSteps)"
@@ -72,5 +74,8 @@ class ViewController: UIViewController {
         restTimeLabel.text = "\(restTime) sec"
     }
     
+    @IBAction func startButtonPressed(_ sender: UIButton) {
+    
+    }
 }
 

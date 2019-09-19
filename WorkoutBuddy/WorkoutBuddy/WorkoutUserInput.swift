@@ -36,4 +36,8 @@ class WorkoutUserInput {
         self.time = time
         self.restTime = restTime
     }
+    
+    func countTime() {
+        
+    }
 }
