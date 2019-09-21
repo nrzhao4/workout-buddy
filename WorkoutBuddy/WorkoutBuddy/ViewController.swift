@@ -36,23 +36,23 @@ class ViewController: UIViewController {
         print("viewDidLoad")
         
         //Labels
-        self.instructions1Label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        self.instructions1Label.font = UIFont.boldSystemFont(ofSize: 14.0)
         self.instructions1Label.text = "Number of exercises"
         
         self.stepsLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
         self.stepsLabel.text = "\(GlobalConstants.defaultSteps)"
        
-        self.instructions2Label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        self.instructions2Label.font = UIFont.boldSystemFont(ofSize: 14.0)
         self.instructions2Label.text = "Time for each exercise"
         
         self.timeLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-        self.timeLabel.text = "\(GlobalConstants.minTimePerStep) sec"
+        self.timeLabel.text = "0:\(GlobalConstants.minTimePerStep)"
        
-        self.instructions3Label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        self.instructions3Label.font = UIFont.boldSystemFont(ofSize: 14.0)
         self.instructions3Label.text = "Time between each exercise"
         
         self.restTimeLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-        self.restTimeLabel.text = "\(GlobalConstants.minRestTime) sec"
+        self.restTimeLabel.text = "0:\(GlobalConstants.minRestTime)0"
        
         //Sliders
         self.timeSlider.minimumValue = Float(GlobalConstants.minTimePerStep)
@@ -72,12 +72,30 @@ class ViewController: UIViewController {
     
     @IBAction func timeSliderValueChanged(_ sender: UISlider) {
         time = Int(sender.value)
-        timeLabel.text = "\(time) sec"
+        
+        let minutes = time / 60
+        let seconds = time - (60 * minutes)
+        
+        if seconds == 0 {
+            timeLabel.text = "\(minutes):00"
+        } else if seconds < 10 {
+            timeLabel.text = "\(minutes):0\(seconds)"
+        } else {
+            timeLabel.text = "\(minutes):\(seconds)"
+        }
     }
 
     @IBAction func restTimeSliderValueChanged(_ sender: UISlider) {
         restTime = Int(sender.value)
-        restTimeLabel.text = "\(restTime) sec"
+        let minutes = restTime / 60
+        let seconds = restTime - (60 * minutes)
+        if seconds == 0 {
+            restTimeLabel.text = "\(minutes):00"
+        } else if seconds < 10 {
+            restTimeLabel.text = "\(minutes):0\(seconds)"
+        } else {
+            restTimeLabel.text = "\(minutes):\(seconds)"
+        }
     }
     
     @IBAction func startButtonPressed(_ sender: UIButton) {

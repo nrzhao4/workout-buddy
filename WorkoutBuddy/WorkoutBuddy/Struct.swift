@@ -10,8 +10,8 @@ import Foundation
 
 struct GlobalConstants {
     static let minTimePerStep = 10
-    static let maxTimePerStep = 30
+    static let maxTimePerStep = 300
     static let minRestTime = 0
-    static let maxRestTime = 10
+    static let maxRestTime = 300
     static let defaultSteps = 5
 }

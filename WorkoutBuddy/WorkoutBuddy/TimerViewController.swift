@@ -25,18 +25,21 @@ class TimerViewController: UIViewController {
     //Timer
     var stepsComplete = 0
     var timerNumber = 1
-    var seconds = 3
+    var secondsDisplay = 3
     var timer = Timer()
     var isTimerRunning = false
+    
+    var minutes = 0
+    var seconds = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.stepLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        self.stepLabel.font = UIFont.systemFont(ofSize: 20.0)
         self.stepLabel.text = "Workout starting in"
         
-        self.timerLabel.font = UIFont.boldSystemFont(ofSize: 60.0)
-        self.timerLabel.text = "00:0\(seconds)"
+        self.timerLabel.font = UIFont(name: "Avenir", size: 62.0)
+        self.timerLabel.text = "00:0\(secondsDisplay)"
         
         self.pauseButton.setTitle("Pause", for: .normal)
         
@@ -57,10 +60,11 @@ class TimerViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        seconds -= 1
+        
+        secondsDisplay -= 1
         updateLabel()
         
-        if seconds == 0 {
+        if secondsDisplay == 0 {
             if stepsComplete == steps {
                 workoutComplete()
             }
@@ -71,14 +75,25 @@ class TimerViewController: UIViewController {
     }
     
     func updateLabel() {
+        
         if (timerNumber == 1) {
-            timerLabel.text = "00:0\(seconds)"
+            timerLabel.text = "00:0\(secondsDisplay)"
             return
         }
-        if (seconds >= 10) {
-            timerLabel.text = "00:\(seconds)"
+        if secondsDisplay >= 60 {
+            minutes = secondsDisplay / 60
+            seconds = secondsDisplay - (minutes * 60)
         } else {
-            timerLabel.text = "00:0\(seconds)"
+            minutes = 0
+            seconds = secondsDisplay
+        }
+        
+        if seconds == 0 {
+            timerLabel.text = "0\(minutes):00"
+        } else if seconds < 10 {
+            timerLabel.text = "0\(minutes):0\(seconds)"
+        } else {
+            timerLabel.text = "0\(minutes):\(seconds)"
         }
         
         if (restTime > 0) && (timerNumber % 2 != 0) {
@@ -91,11 +106,11 @@ class TimerViewController: UIViewController {
     
     func timerDone() {
         if (restTime > 0) && (timerNumber % 2 == 0) {
-            seconds = restTime + 1
+            secondsDisplay = restTime + 1
             timerNumber += 1
         }
         else {
-            seconds = timerTime + 1
+            secondsDisplay = timerTime + 1
             timerNumber += 1
             stepsComplete += 1
         }
