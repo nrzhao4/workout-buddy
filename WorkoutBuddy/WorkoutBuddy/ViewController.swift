@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var restTimeLabel: UILabel!
     @IBOutlet weak var restTimeSlider: UISlider!
     
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var startButton: RoundPrimaryButton!
     
     var steps = 5
     var time = 10
@@ -32,8 +32,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("viewDidLoad")
         
         //Labels
         self.instructions1Label.font = UIFont.boldSystemFont(ofSize: 14.0)
@@ -62,7 +60,7 @@ class ViewController: UIViewController {
         self.restTimeSlider.maximumValue = Float(GlobalConstants.maxRestTime)
         
         //Buttons
-        self.startButton.setTitle("Start", for: .normal)
+        startButton.setTitle("Start workout", for: .normal)
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {

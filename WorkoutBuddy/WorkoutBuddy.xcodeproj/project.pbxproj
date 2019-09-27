@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5732B181233D845600478706 /* RoundPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5732B180233D845600478706 /* RoundPrimaryButton.swift */; };
 		57B8B3A5232F10B400401E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3A4232F10B400401E81 /* AppDelegate.swift */; };
 		57B8B3A7232F10B400401E81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3A6232F10B400401E81 /* ViewController.swift */; };
 		57B8B3AA232F10B400401E81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57B8B3A8232F10B400401E81 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5732B180233D845600478706 /* RoundPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPrimaryButton.swift; sourceTree = "<group>"; };
 		57B8B3A1232F10B400401E81 /* WorkoutBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B8B3A4232F10B400401E81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57B8B3A6232F10B400401E81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */,
 				57ED449C2331DB0A00EBD511 /* TimerViewController.swift */,
 				57B8B3A8232F10B400401E81 /* Main.storyboard */,
+				5732B180233D845600478706 /* RoundPrimaryButton.swift */,
 				57B8B3AB232F10B500401E81 /* Assets.xcassets */,
 				57B8B3AD232F10B500401E81 /* LaunchScreen.storyboard */,
 				57B8B3B0232F10B500401E81 /* Info.plist */,
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57ED449D2331DB0A00EBD511 /* TimerViewController.swift in Sources */,
+				5732B181233D845600478706 /* RoundPrimaryButton.swift in Sources */,
 				57B8B3C7233142E700401E81 /* Struct.swift in Sources */,
 				57B8B3C523313FB700401E81 /* WorkoutUserInput.swift in Sources */,
 				57B8B3A7232F10B400401E81 /* ViewController.swift in Sources */,

@@ -13,7 +13,7 @@ class TimerViewController: UIViewController {
     //MARK: Properties
     
     @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var pauseButton: RoundPrimaryButton!
     @IBOutlet weak var stepLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
@@ -138,7 +138,8 @@ class TimerViewController: UIViewController {
             pauseButton.setTitle("Resume", for: .normal)
         }
         
-        else if isTimerRunning == false && stepsComplete < steps {
+        else if isTimerRunning == false && stepsComplete <= steps {
+            print("resume timer")
             runTimer()
             pauseButton.setTitle("Pause", for: .normal)
         }
