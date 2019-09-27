@@ -64,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5732B182233DCCBA00478706 /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				5732B180233D845600478706 /* RoundPrimaryButton.swift */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
 		57B8B398232F10B400401E81 = {
 			isa = PBXGroup;
 			children = (
@@ -91,7 +99,7 @@
 				57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */,
 				57ED449C2331DB0A00EBD511 /* TimerViewController.swift */,
 				57B8B3A8232F10B400401E81 /* Main.storyboard */,
-				5732B180233D845600478706 /* RoundPrimaryButton.swift */,
+				5732B182233DCCBA00478706 /* CustomUI */,
 				57B8B3AB232F10B500401E81 /* Assets.xcassets */,
 				57B8B3AD232F10B500401E81 /* LaunchScreen.storyboard */,
 				57B8B3B0232F10B500401E81 /* Info.plist */,
