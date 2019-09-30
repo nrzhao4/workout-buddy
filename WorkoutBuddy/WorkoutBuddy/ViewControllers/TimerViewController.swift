@@ -16,6 +16,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var pauseButton: RoundPrimaryButton!
     @IBOutlet weak var stepLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
+    var timerColourBackground: TimerColourView!
     
     //From user input
     var steps = 0
@@ -47,6 +48,11 @@ class TimerViewController: UIViewController {
         self.doneButton.isEnabled = false
         self.doneButton.isHidden = true
         
+        timerColourBackground = TimerColourView(frame: CGRect.zero)
+        timerColourBackground.setUpdateValues(timerSeconds: 2)
+        self.view.addSubview(timerColourBackground)
+        self.view.sendSubviewToBack(timerColourBackground)
+        
         runTimer()
 
     }
@@ -60,7 +66,7 @@ class TimerViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        
+        timerColourBackground.updateWidth()
         secondsDisplay -= 1
         updateLabel()
         
@@ -76,10 +82,13 @@ class TimerViewController: UIViewController {
     
     func updateLabel() {
         
+        //Countdown to start
         if (timerNumber == 1) {
             timerLabel.text = "00:0\(secondsDisplay)"
             return
         }
+        
+        //Displaying time format
         if secondsDisplay >= 60 {
             minutes = secondsDisplay / 60
             seconds = secondsDisplay - (minutes * 60)
@@ -96,6 +105,7 @@ class TimerViewController: UIViewController {
             timerLabel.text = "0\(minutes):\(seconds)"
         }
         
+        //Label if exercise or rest time
         if (restTime > 0) && (timerNumber % 2 != 0) {
             stepLabel.text = "Next exercise starting in"
         }
@@ -105,14 +115,22 @@ class TimerViewController: UIViewController {
     }
     
     func timerDone() {
+        //Every other timer is a rest timer
         if (restTime > 0) && (timerNumber % 2 == 0) {
             secondsDisplay = restTime + 1
             timerNumber += 1
+            timerColourBackground.clear()
+            timerColourBackground.setUpdateValues(timerSeconds: restTime)
+            timerColourBackground.startTimerBackground(isRestTime: true)
         }
+        //If no rest timers needed
         else {
             secondsDisplay = timerTime + 1
             timerNumber += 1
             stepsComplete += 1
+            timerColourBackground.clear()
+            timerColourBackground.setUpdateValues(timerSeconds: timerTime)
+            timerColourBackground.startTimerBackground(isRestTime: false)
         }
     }
     
@@ -127,6 +145,8 @@ class TimerViewController: UIViewController {
         pauseButton.isHidden = true
         doneButton.isEnabled = true
         doneButton.isHidden = false
+        
+        timerColourBackground.clear()
         
     }
     
