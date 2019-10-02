@@ -103,8 +103,8 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let workout = segue.destination as? TimerViewController {
             workout.steps = steps
-            workout.timerTime = time
-            workout.restTime = restTime
+            workout.timerSeconds = time
+            workout.restTimeSeconds = restTime
         }
     }
 }

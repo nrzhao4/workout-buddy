@@ -12,35 +12,47 @@ class TimerViewController: UIViewController {
     
     //MARK: Properties
     
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var pauseButton: RoundPrimaryButton!
-    @IBOutlet weak var stepLabel: UILabel!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var timerDescriptionLabel: UILabel!
+    @IBOutlet weak var doneButton: RoundPrimaryButton!
+    
     var timerColourBackground: TimerColourView!
     
     //From user input
     var steps = 0
-    var timerTime = 0
-    var restTime = 0
+    var timerSeconds = 0
+    var restTimeSeconds = 0
     
     //Timer
-    var stepsComplete = 0
-    var timerNumber = 1
-    var secondsDisplay = 3
-    var timer = Timer()
-    var isTimerRunning = false
-    
+    //Initial timer has 3 second countdown
+    var totalSeconds = 3
     var minutes = 0
     var seconds = 0
+    var initialTimerDone = false
+    
+    var timersNeeded = 0
+    var restTimersNeeded = 0
+    var stepNumber = 0
+    var timerPaused = false
+    
+    var timer = Timer()
+    var firstTimer = Timer()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.stepLabel.font = UIFont.systemFont(ofSize: 20.0)
-        self.stepLabel.text = "Workout starting in"
+        timersNeeded = steps
+        if restTimeSeconds > 0 {
+            restTimersNeeded = steps - 1
+        }
         
-        self.timerLabel.font = UIFont(name: "Avenir", size: 62.0)
-        self.timerLabel.text = "00:0\(secondsDisplay)"
+        self.timerDescriptionLabel.font = UIFont.systemFont(ofSize: 20.0)
+        self.timerDescriptionLabel.text = "Workout starting in"
+        
+        self.timeLabel.font = UIFont(name: "Avenir", size: 62.0)
+        self.timeLabel.text = "00:03"
         
         self.pauseButton.setTitle("Pause", for: .normal)
         
@@ -49,121 +61,146 @@ class TimerViewController: UIViewController {
         self.doneButton.isHidden = true
         
         timerColourBackground = TimerColourView(frame: CGRect.zero)
-        timerColourBackground.setUpdateValues(timerSeconds: 2)
+
         self.view.addSubview(timerColourBackground)
         self.view.sendSubviewToBack(timerColourBackground)
         
-        runTimer()
-
+        initialTimer()
+        
     }
     
     //MARK: Functions
     
+    //Initial countdown of 3 seconds before workout begins
+    func initialTimer() {
+        firstTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self,selector:
+            (#selector(updateInitialTimer)), userInfo: nil, repeats: true)
+    }
+    @objc func updateInitialTimer() {
+        totalSeconds -= 1
+        timeLabel.text = "00:0\(totalSeconds)"
+        
+        //initial timer done
+        if totalSeconds == 0 {
+            firstTimer.invalidate()
+            setupTimer(isRestTime: false)
+            initialTimerDone = true
+        }
+    }
+
+    
+    //Workout timers
+    func setupTimer(isRestTime: Bool) {
+        if isRestTime == false {
+            stepNumber += 1
+            timersNeeded -= 1
+            totalSeconds = timerSeconds
+            timerDescriptionLabel.text = "Exercise \(steps - timersNeeded)"
+            timerColourBackground.startTimerBackground(isRestTime: false)
+            timerColourBackground.setUpdateValues(timerSeconds: timerSeconds - 1)
+        } else {
+            stepNumber += 1
+            restTimersNeeded -= 1
+            totalSeconds = restTimeSeconds
+            timerDescriptionLabel.text = "Next exercise starting in"
+            timerColourBackground.startTimerBackground(isRestTime: true)
+            timerColourBackground.setUpdateValues(timerSeconds: restTimeSeconds - 1)
+        }
+        updateLabel()
+        runTimer()
+        animateBackground(timerDuration: totalSeconds, width: timerColourBackground.widthPerSecond)
+    }
+    
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,selector:
             (#selector(updateTimer)), userInfo: nil, repeats: true)
-        isTimerRunning = true
+        
     }
     
     @objc func updateTimer() {
-        timerColourBackground.updateWidth()
-        secondsDisplay -= 1
-        updateLabel()
-        
-        if secondsDisplay == 0 {
-            if stepsComplete == steps {
-                workoutComplete()
-            }
-            else {
-                timerDone()
-            }
+        totalSeconds -= 1
+        //timerColourBackground.updateWidth()
+        if totalSeconds >= 1 {
+            updateLabel()
+        } else {
+            timer.invalidate()
+            timerDone()
         }
     }
     
     func updateLabel() {
-        
-        //Countdown to start
-        if (timerNumber == 1) {
-            timerLabel.text = "00:0\(secondsDisplay)"
-            return
-        }
-        
-        //Displaying time format
-        if secondsDisplay >= 60 {
-            minutes = secondsDisplay / 60
-            seconds = secondsDisplay - (minutes * 60)
-        } else {
+        //calculation of display minutes and seconds
+        if totalSeconds < 60 {
             minutes = 0
-            seconds = secondsDisplay
+            seconds = totalSeconds
+        } else if totalSeconds > 60 {
+            seconds = totalSeconds % 60
+            minutes = (totalSeconds - seconds) / 60
         }
         
-        if seconds == 0 {
-            timerLabel.text = "0\(minutes):00"
-        } else if seconds < 10 {
-            timerLabel.text = "0\(minutes):0\(seconds)"
-        } else {
-            timerLabel.text = "0\(minutes):\(seconds)"
+        //formatting of minutes and seconds
+        if minutes < 10 && seconds < 10 {
+            timeLabel.text = "0\(minutes):0\(seconds)"
+        } else if minutes < 10 && seconds >= 10 {
+            timeLabel.text = "0\(minutes):\(seconds)"
+        } else if minutes >= 10 && seconds < 10 {
+            timeLabel.text = "\(minutes):0\(seconds)"
+        } else if minutes >= 10 && seconds >= 10 {
+            timeLabel.text = "\(minutes):\(seconds)"
         }
-        
-        //Label if exercise or rest time
-        if (restTime > 0) && (timerNumber % 2 != 0) {
-            stepLabel.text = "Next exercise starting in"
-        }
-        else {
-            stepLabel.text = "Exercise \(stepsComplete)"
-        }
+
     }
     
     func timerDone() {
-        //Every other timer is a rest timer
-        if (restTime > 0) && (timerNumber % 2 == 0) {
-            secondsDisplay = restTime + 1
-            timerNumber += 1
-            timerColourBackground.clear()
-            timerColourBackground.setUpdateValues(timerSeconds: restTime)
-            timerColourBackground.startTimerBackground(isRestTime: true)
+        if timersNeeded == 0 {
+            workoutComplete()
+        } else if (restTimersNeeded != 0) && (stepNumber % 2 != 0) {
+            //If need rest timer, every other timer will be a rest timer
+            setupTimer(isRestTime: true)
+        } else {
+            setupTimer(isRestTime: false)
         }
-        //If no rest timers needed
-        else {
-            secondsDisplay = timerTime + 1
-            timerNumber += 1
-            stepsComplete += 1
-            timerColourBackground.clear()
-            timerColourBackground.setUpdateValues(timerSeconds: timerTime)
-            timerColourBackground.startTimerBackground(isRestTime: false)
-        }
+        //timerColourBackground.clear()
     }
     
     func workoutComplete() {
-        timer.invalidate()
-        isTimerRunning = false
         
-        stepLabel.text = "Workout complete"
-        timerLabel.isHidden = true
+        timerColourBackground.isHidden = true
+        timerColourBackground = nil
+        
+        timeLabel.text = "00:00"
+        timerDescriptionLabel.text = "Workout complete!"
         
         pauseButton.isEnabled = false
         pauseButton.isHidden = true
-        doneButton.isEnabled = true
-        doneButton.isHidden = false
         
-        timerColourBackground.clear()
+        doneButton.isHidden = false
+        doneButton.isEnabled = true
         
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        print("button pressed")
-        if isTimerRunning == true {
-            timer.invalidate()
-            isTimerRunning = false
+        if timerPaused == false {
+            if initialTimerDone == false {
+                firstTimer.invalidate()
+            } else {
+                timer.invalidate()
+            }
             pauseButton.setTitle("Resume", for: .normal)
-        }
-        
-        else if isTimerRunning == false && stepsComplete <= steps {
-            print("resume timer")
-            runTimer()
+            timerPaused = true
+        } else {
+            if initialTimerDone == false {
+                initialTimer()
+            } else {
+                runTimer()
+            }
             pauseButton.setTitle("Pause", for: .normal)
+            timerPaused = false
         }
     }
     
+    func animateBackground(timerDuration: Int, width: Double) {
+        UIView.animate(withDuration: Double(timerDuration), animations: {self.timerColourBackground.frame.size.width += CGFloat(self.timerColourBackground.screenWidth)})
 
+    }
 }

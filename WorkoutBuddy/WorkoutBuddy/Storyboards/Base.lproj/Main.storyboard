@@ -180,7 +180,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Lu-G4-gHf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Lu-G4-gHf" customClass="RoundPrimaryButton" customModule="WorkoutBuddy" customModuleProvider="target">
                                 <rect key="frame" x="100" y="341" width="175" height="30"/>
                                 <state key="normal" title="&lt;new workout&gt;"/>
                                 <connections>
@@ -205,8 +205,8 @@
                     <connections>
                         <outlet property="doneButton" destination="4Lu-G4-gHf" id="v5y-bH-WuR"/>
                         <outlet property="pauseButton" destination="L7K-1P-vBt" id="Llh-RW-1kO"/>
-                        <outlet property="stepLabel" destination="edj-o9-W7K" id="gMs-iK-yjf"/>
-                        <outlet property="timerLabel" destination="S12-hl-Jmy" id="vXi-L9-ndW"/>
+                        <outlet property="timeLabel" destination="S12-hl-Jmy" id="2bh-sa-pCj"/>
+                        <outlet property="timerDescriptionLabel" destination="edj-o9-W7K" id="v44-0e-5Uc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f64-5Q-VX2" userLabel="First Responder" sceneMemberID="firstResponder"/>

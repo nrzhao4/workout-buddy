@@ -47,13 +47,17 @@ class TimerColourView: UIView {
         widthPerSecond = Double(screenWidth) / Double(timerSeconds)
     }
     
-    func updateWidth() {
-        width += widthPerSecond
-        frame.size.width = CGFloat(width)
-    }
-    
     func clear() {
         width = 0
         frame.size.width = CGFloat(width)
     }
+    
+    //Deprecated
+    /*
+    func updateWidth() {
+        width += widthPerSecond
+        frame.size.width = CGFloat(width)
+    }*/
+    
+
 }
