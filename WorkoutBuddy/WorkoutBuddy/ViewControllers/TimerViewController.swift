@@ -18,6 +18,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var doneButton: RoundPrimaryButton!
     
     var timerColourBackground: TimerColourView!
+    var timerAnimate: UIViewPropertyAnimator!
     
     //From user input
     var steps = 0
@@ -61,12 +62,11 @@ class TimerViewController: UIViewController {
         self.doneButton.isHidden = true
         
         timerColourBackground = TimerColourView(frame: CGRect.zero)
-
+        
         self.view.addSubview(timerColourBackground)
         self.view.sendSubviewToBack(timerColourBackground)
         
         initialTimer()
-        
     }
     
     //MARK: Functions
@@ -87,7 +87,6 @@ class TimerViewController: UIViewController {
             initialTimerDone = true
         }
     }
-
     
     //Workout timers
     func setupTimer(isRestTime: Bool) {
@@ -97,18 +96,16 @@ class TimerViewController: UIViewController {
             totalSeconds = timerSeconds
             timerDescriptionLabel.text = "Exercise \(steps - timersNeeded)"
             timerColourBackground.startTimerBackground(isRestTime: false)
-            timerColourBackground.setUpdateValues(timerSeconds: timerSeconds - 1)
         } else {
             stepNumber += 1
             restTimersNeeded -= 1
             totalSeconds = restTimeSeconds
             timerDescriptionLabel.text = "Next exercise starting in"
             timerColourBackground.startTimerBackground(isRestTime: true)
-            timerColourBackground.setUpdateValues(timerSeconds: restTimeSeconds - 1)
         }
         updateLabel()
         runTimer()
-        animateBackground(timerDuration: totalSeconds, width: timerColourBackground.widthPerSecond)
+        animateBackground(time: totalSeconds)
     }
     
     func runTimer() {
@@ -119,7 +116,6 @@ class TimerViewController: UIViewController {
     
     @objc func updateTimer() {
         totalSeconds -= 1
-        //timerColourBackground.updateWidth()
         if totalSeconds >= 1 {
             updateLabel()
         } else {
@@ -160,11 +156,9 @@ class TimerViewController: UIViewController {
         } else {
             setupTimer(isRestTime: false)
         }
-        //timerColourBackground.clear()
     }
     
     func workoutComplete() {
-        
         timerColourBackground.isHidden = true
         timerColourBackground = nil
         
@@ -176,7 +170,6 @@ class TimerViewController: UIViewController {
         
         doneButton.isHidden = false
         doneButton.isEnabled = true
-        
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -199,8 +192,13 @@ class TimerViewController: UIViewController {
         }
     }
     
-    func animateBackground(timerDuration: Int, width: Double) {
-        UIView.animate(withDuration: Double(timerDuration), animations: {self.timerColourBackground.frame.size.width += CGFloat(self.timerColourBackground.screenWidth)})
-
+    func animateBackground(time: Int) {
+        timerAnimate = UIViewPropertyAnimator(
+            duration: Double(time),
+            curve: .linear) {
+                print("animating")
+                self.timerColourBackground.frame.size.width += self.timerColourBackground.screenWidth
+        }
+        timerAnimate.startAnimation()
     }
 }
