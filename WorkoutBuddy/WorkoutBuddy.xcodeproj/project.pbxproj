@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5732B181233D845600478706 /* RoundPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5732B180233D845600478706 /* RoundPrimaryButton.swift */; };
+		5766BA3C23417CC40094682D /* TimerColourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5766BA3B23417CC40094682D /* TimerColourView.swift */; };
 		57B8B3A5232F10B400401E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3A4232F10B400401E81 /* AppDelegate.swift */; };
 		57B8B3A7232F10B400401E81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3A6232F10B400401E81 /* ViewController.swift */; };
 		57B8B3AA232F10B400401E81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57B8B3A8232F10B400401E81 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		5732B180233D845600478706 /* RoundPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPrimaryButton.swift; sourceTree = "<group>"; };
+		5766BA3B23417CC40094682D /* TimerColourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerColourView.swift; sourceTree = "<group>"; };
 		57B8B3A1232F10B400401E81 /* WorkoutBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B8B3A4232F10B400401E81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57B8B3A6232F10B400401E81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,31 @@
 			path = CustomUI;
 			sourceTree = "<group>";
 		};
+		5766BA3823417C630094682D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				57B8B3A8232F10B400401E81 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5766BA3923417C800094682D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5766BA3B23417CC40094682D /* TimerColourView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5766BA3A23417C840094682D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				57B8B3A6232F10B400401E81 /* ViewController.swift */,
+				57ED449C2331DB0A00EBD511 /* TimerViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		57B8B398232F10B400401E81 = {
 			isa = PBXGroup;
 			children = (
@@ -93,12 +120,12 @@
 		57B8B3A3232F10B400401E81 /* WorkoutBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				5766BA3923417C800094682D /* Views */,
+				5766BA3A23417C840094682D /* ViewControllers */,
+				5766BA3823417C630094682D /* Storyboards */,
 				57B8B3A4232F10B400401E81 /* AppDelegate.swift */,
 				57B8B3C6233142E700401E81 /* Struct.swift */,
-				57B8B3A6232F10B400401E81 /* ViewController.swift */,
 				57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */,
-				57ED449C2331DB0A00EBD511 /* TimerViewController.swift */,
-				57B8B3A8232F10B400401E81 /* Main.storyboard */,
 				5732B182233DCCBA00478706 /* CustomUI */,
 				57B8B3AB232F10B500401E81 /* Assets.xcassets */,
 				57B8B3AD232F10B500401E81 /* LaunchScreen.storyboard */,
@@ -218,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57ED449D2331DB0A00EBD511 /* TimerViewController.swift in Sources */,
+				5766BA3C23417CC40094682D /* TimerColourView.swift in Sources */,
 				5732B181233D845600478706 /* RoundPrimaryButton.swift in Sources */,
 				57B8B3C7233142E700401E81 /* Struct.swift in Sources */,
 				57B8B3C523313FB700401E81 /* WorkoutUserInput.swift in Sources */,
@@ -387,6 +415,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3PZK268UH9;
 				INFOPLIST_FILE = WorkoutBuddy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -405,6 +434,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3PZK268UH9;
 				INFOPLIST_FILE = WorkoutBuddy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
