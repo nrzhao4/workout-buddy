@@ -179,6 +179,7 @@ class TimerViewController: UIViewController {
             } else {
                 timer.invalidate()
             }
+            timerAnimate.pauseAnimation()
             pauseButton.setTitle("Resume", for: .normal)
             timerPaused = true
         } else {
@@ -187,6 +188,7 @@ class TimerViewController: UIViewController {
             } else {
                 runTimer()
             }
+            timerAnimate.startAnimation()
             pauseButton.setTitle("Pause", for: .normal)
             timerPaused = false
         }
