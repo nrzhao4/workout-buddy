@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077.5999999999999" y="116.49175412293854"/>
+            <point key="canvasLocation" x="2016.8" y="116.49175412293854"/>
         </scene>
         <!--Timer View Controller-->
         <scene sceneID="Z6f-NU-iwf">
@@ -211,7 +211,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f64-5Q-VX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740" y="119.1904047976012"/>
+            <point key="canvasLocation" x="2679.1999999999998" y="119.1904047976012"/>
+        </scene>
+        <!--Custom Exercise View Controller-->
+        <scene sceneID="V3z-yl-LoP">
+            <objects>
+                <viewController id="efr-jZ-uHp" customClass="CustomExerciseViewController" customModule="WorkoutBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IJQ-4R-sNd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="UEx-bM-NzZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="g2D-mR-s6U"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nMA-uJ-t8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1220" y="118.29085457271366"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Uey-Se-1d9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QYX-5r-etY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d5M-ZE-9Dr">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="efr-jZ-uHp" kind="relationship" relationship="rootViewController" id="TAT-jY-eyM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q1p-EH-FyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280.80000000000001" y="118.29085457271366"/>
         </scene>
     </scenes>
 </document>
