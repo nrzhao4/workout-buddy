@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class TimerViewController: UIViewController {
     
@@ -17,8 +18,12 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerDescriptionLabel: UILabel!
     @IBOutlet weak var doneButton: RoundPrimaryButton!
     
-    var timerColourBackground: TimerColourView!
+    //System sound ID
+    let soundID = 1008
+    
+    var timerColourView: TimerColourView!
     var timerAnimate: UIViewPropertyAnimator!
+    var textToSpeech: TextToSpeech!
     
     //From user input
     var steps = 0
@@ -49,6 +54,8 @@ class TimerViewController: UIViewController {
             restTimersNeeded = steps - 1
         }
         
+        textToSpeech = TextToSpeech()
+        
         self.timerDescriptionLabel.font = UIFont.systemFont(ofSize: 20.0)
         self.timerDescriptionLabel.text = "Workout starting in"
         
@@ -61,10 +68,9 @@ class TimerViewController: UIViewController {
         self.doneButton.isEnabled = false
         self.doneButton.isHidden = true
         
-        timerColourBackground = TimerColourView(frame: CGRect.zero)
-        
-        self.view.addSubview(timerColourBackground)
-        self.view.sendSubviewToBack(timerColourBackground)
+        timerColourView = TimerColourView(frame: CGRect.zero)
+        self.view.addSubview(timerColourView)
+        self.view.sendSubviewToBack(timerColourView)
         
         initialTimer()
     }
@@ -90,18 +96,21 @@ class TimerViewController: UIViewController {
     
     //Workout timers
     func setupTimer(isRestTime: Bool) {
+        AudioServicesPlayAlertSound(SystemSoundID(soundID))
         if isRestTime == false {
             stepNumber += 1
             timersNeeded -= 1
             totalSeconds = timerSeconds
             timerDescriptionLabel.text = "Exercise \(steps - timersNeeded)"
-            timerColourBackground.startTimerBackground(isRestTime: false)
+            textToSpeech.speak(string: "Exercise \(steps - timersNeeded)")
+            timerColourView.startTimerBackground(isRestTime: false)
         } else {
             stepNumber += 1
             restTimersNeeded -= 1
             totalSeconds = restTimeSeconds
             timerDescriptionLabel.text = "Next exercise starting in"
-            timerColourBackground.startTimerBackground(isRestTime: true)
+            textToSpeech.speak(string: "Next exercise starting soon")
+            timerColourView.startTimerBackground(isRestTime: true)
         }
         updateLabel()
         runTimer()
@@ -159,11 +168,13 @@ class TimerViewController: UIViewController {
     }
     
     func workoutComplete() {
-        timerColourBackground.isHidden = true
-        timerColourBackground = nil
+        timerColourView.isHidden = true
+        timerColourView = nil
         
         timeLabel.text = "00:00"
         timerDescriptionLabel.text = "Workout complete!"
+        AudioServicesPlayAlertSound(SystemSoundID(soundID))
+        textToSpeech.speak(string: "Workout complete!")
         
         pauseButton.isEnabled = false
         pauseButton.isHidden = true
@@ -198,8 +209,7 @@ class TimerViewController: UIViewController {
         timerAnimate = UIViewPropertyAnimator(
             duration: Double(time),
             curve: .linear) {
-                print("animating")
-                self.timerColourBackground.frame.size.width += self.timerColourBackground.screenWidth
+                self.timerColourView.frame.size.width += self.timerColourView.screenWidth
         }
         timerAnimate.startAnimation()
     }

@@ -17,6 +17,7 @@
 		57B8B3BA232F10B500401E81 /* WorkoutBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3B9232F10B500401E81 /* WorkoutBuddyTests.swift */; };
 		57B8B3C523313FB700401E81 /* WorkoutUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */; };
 		57B8B3C7233142E700401E81 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8B3C6233142E700401E81 /* Struct.swift */; };
+		57C703052352B47D000D03BB /* TextToSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C703042352B47D000D03BB /* TextToSpeech.swift */; };
 		57ED449D2331DB0A00EBD511 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED449C2331DB0A00EBD511 /* TimerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		57B8B3BB232F10B500401E81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutUserInput.swift; sourceTree = "<group>"; };
 		57B8B3C6233142E700401E81 /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
+		57C703042352B47D000D03BB /* TextToSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeech.swift; sourceTree = "<group>"; };
 		57ED449C2331DB0A00EBD511 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 			children = (
 				5766BA3923417C800094682D /* Views */,
 				5766BA3A23417C840094682D /* ViewControllers */,
+				57C703062352B487000D03BB /* Models */,
 				5766BA3823417C630094682D /* Storyboards */,
 				57B8B3A4232F10B400401E81 /* AppDelegate.swift */,
 				57B8B3C6233142E700401E81 /* Struct.swift */,
@@ -141,6 +144,14 @@
 				57B8B3BB232F10B500401E81 /* Info.plist */,
 			);
 			path = WorkoutBuddyTests;
+			sourceTree = "<group>";
+		};
+		57C703062352B487000D03BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				57C703042352B47D000D03BB /* TextToSpeech.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +260,7 @@
 				5732B181233D845600478706 /* RoundPrimaryButton.swift in Sources */,
 				57B8B3C7233142E700401E81 /* Struct.swift in Sources */,
 				57B8B3C523313FB700401E81 /* WorkoutUserInput.swift in Sources */,
+				57C703052352B47D000D03BB /* TextToSpeech.swift in Sources */,
 				57B8B3A7232F10B400401E81 /* ViewController.swift in Sources */,
 				57B8B3A5232F10B400401E81 /* AppDelegate.swift in Sources */,
 			);
