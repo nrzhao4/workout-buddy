@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QYX-5r-etY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -213,7 +213,7 @@
             </objects>
             <point key="canvasLocation" x="2679.1999999999998" y="119.1904047976012"/>
         </scene>
-        <!--Custom Exercise View Controller-->
+        <!--Add an exercise-->
         <scene sceneID="V3z-yl-LoP">
             <objects>
                 <viewController id="efr-jZ-uHp" customClass="CustomExerciseViewController" customModule="WorkoutBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -223,7 +223,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="UEx-bM-NzZ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="g2D-mR-s6U"/>
+                    <navigationItem key="navigationItem" title="Add an exercise" id="g2D-mR-s6U"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMA-uJ-t8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -248,4 +248,7 @@
             <point key="canvasLocation" x="280.80000000000001" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qML-Qs-kGr"/>
+    </inferredMetricsTieBreakers>
 </document>
