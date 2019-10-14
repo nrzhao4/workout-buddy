@@ -12,15 +12,15 @@ class WorkoutUserInput {
     
     //MARK: Properties
     
-    var steps: Int
+    var exerciseName: String
     var time: Int
     var restTime: Int
     
     //MARK: Initialization
     
-    init?(steps: Int, time: Int, restTime: Int) {
+    init?(exerciseName: String, time: Int, restTime: Int) {
         
-        guard steps >= 1 else {
+        guard exerciseName != "" else {
             return nil
         }
         
@@ -32,7 +32,7 @@ class WorkoutUserInput {
             return nil
         }
         
-        self.steps = steps
+        self.exerciseName = exerciseName
         self.time = time
         self.restTime = restTime
     }

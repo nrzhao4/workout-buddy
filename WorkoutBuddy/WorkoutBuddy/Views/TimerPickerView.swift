@@ -12,6 +12,8 @@ class TimerPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSourc
     
     var minutes = [String]()
     var seconds = [String]()
+    var pickerMinutes = 0
+    var pickerSeconds = 0
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -27,9 +29,9 @@ class TimerPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSourc
     func setData() {
         for i in 0...59 {
             if i <= 10 {
-                minutes += [String(i) + "m"]
+                minutes += [String(i)]
             }
-            seconds += [String(i) + "s"]
+            seconds += [String(i)]
         }
     }
     
@@ -55,5 +57,23 @@ class TimerPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSourc
         } else {
             return String(seconds[row])
         }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 0 {
+            pickerMinutes = Int(minutes[row])!
+        } else if component == 1 {
+        } else {
+            pickerSeconds = Int(seconds[row])!
+        }
+    }
+    
+    func getTotalSeconds() -> Int {
+        return (pickerMinutes * 60) + pickerSeconds
+    }
+    
+    func clearPickerValues() {
+        pickerMinutes = 0
+        pickerSeconds = 0
     }
 }
