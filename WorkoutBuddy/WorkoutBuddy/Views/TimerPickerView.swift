@@ -26,7 +26,9 @@ class TimerPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSourc
     
     func setData() {
         for i in 0...59 {
-            minutes += [String(i) + "m"]
+            if i <= 10 {
+                minutes += [String(i) + "m"]
+            }
             seconds += [String(i) + "s"]
         }
     }
@@ -36,10 +38,12 @@ class TimerPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 || component == 2 {
-            return minutes.count
-        } else {
+        if component == 0 {
+            return 11
+        } else if component == 1 {
             return 1
+        } else {
+            return 60
         }
     }
     

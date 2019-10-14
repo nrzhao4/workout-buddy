@@ -220,10 +220,67 @@
                     <view key="view" contentMode="scaleToFill" id="IJQ-4R-sNd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-mr-JfB">
+                                <rect key="frame" x="87.5" y="84" width="200" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exercise Name" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BwR-L2-wJ0">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="umH-gc-TCB"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QlK-EG-fCE">
+                                <rect key="frame" x="87.5" y="122" width="200" height="31"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbS-t4-iDa">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tII-hu-lex">
+                                                <rect key="frame" x="0.0" y="0.0" width="151" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YAa-79-gwJ">
+                                                <rect key="frame" x="151" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="restSwitchChanged:" destination="efr-jZ-uHp" eventType="valueChanged" id="Amo-zs-VJo"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="Ocu-Dy-hck"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="tuJ-Aq-EPR"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dgO-mr-JfB" firstAttribute="top" secondItem="UEx-bM-NzZ" secondAttribute="top" constant="20" id="1Pr-ht-zJn"/>
+                            <constraint firstItem="dgO-mr-JfB" firstAttribute="centerX" secondItem="IJQ-4R-sNd" secondAttribute="centerX" id="IQy-3x-3dk"/>
+                            <constraint firstItem="QlK-EG-fCE" firstAttribute="centerX" secondItem="IJQ-4R-sNd" secondAttribute="centerX" id="pbu-g1-Fiz"/>
+                            <constraint firstItem="QlK-EG-fCE" firstAttribute="top" secondItem="dgO-mr-JfB" secondAttribute="bottom" constant="8" id="xEd-Ca-cdn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UEx-bM-NzZ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add an exercise" id="g2D-mR-s6U"/>
+                    <connections>
+                        <outlet property="addRestLabel" destination="tII-hu-lex" id="Ccb-gv-wi4"/>
+                        <outlet property="addRestSwitch" destination="YAa-79-gwJ" id="LUZ-yL-6mA"/>
+                        <outlet property="exerciseName" destination="BwR-L2-wJ0" id="edi-jl-WNg"/>
+                        <outlet property="stackView" destination="dgO-mr-JfB" id="1F0-Vl-3eT"/>
+                        <outlet property="stackView2" destination="QlK-EG-fCE" id="kku-29-A04"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMA-uJ-t8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
