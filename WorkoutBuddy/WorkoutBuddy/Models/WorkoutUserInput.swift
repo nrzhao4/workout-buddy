@@ -14,26 +14,32 @@ class WorkoutUserInput {
     
     var exerciseName: String
     var time: Int
+    var reps: Int
     var restTime: Int
     
     //MARK: Initialization
     
-    init?(exerciseName: String, time: Int, restTime: Int) {
+    init?(exerciseName: String, time: Int, reps: Int, restTime: Int) {
         
         guard exerciseName != "" else {
             return nil
         }
         
-        guard (time <= GlobalConstants.maxTimePerStep) && (time >= GlobalConstants.minTimePerStep) else {
+        guard (time <= 600) && (time >= 1) else {
             return nil
         }
         
-        guard (restTime <= GlobalConstants.maxRestTime) && (restTime >= GlobalConstants.minRestTime) else {
+        guard reps >= 1 && reps <= 10 else {
+            return nil
+        }
+        
+        guard (restTime <= 600) && (restTime >= 0) else {
             return nil
         }
         
         self.exerciseName = exerciseName
         self.time = time
+        self.reps = reps
         self.restTime = restTime
     }
     

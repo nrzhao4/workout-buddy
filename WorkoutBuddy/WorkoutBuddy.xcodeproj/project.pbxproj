@@ -23,6 +23,8 @@
 		57C703082353B1E7000D03BB /* CustomExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C703072353B1E7000D03BB /* CustomExerciseViewController.swift */; };
 		57C7030A2353B6B8000D03BB /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C703092353B6B8000D03BB /* TimerPickerView.swift */; };
 		57ED449D2331DB0A00EBD511 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED449C2331DB0A00EBD511 /* TimerViewController.swift */; };
+		57FD9E5D2358FB5C00E960BB /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD9E5C2358FB5C00E960BB /* ReviewViewController.swift */; };
+		57FD9E5F2358FB8F00E960BB /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD9E5E2358FB8F00E960BB /* ExerciseTableViewCell.swift */; };
 		96EF2A3AFAE3535467858E40 /* Pods_WorkoutBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D0087A0E222C830EB09C7D /* Pods_WorkoutBuddy.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		57C703072353B1E7000D03BB /* CustomExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExerciseViewController.swift; sourceTree = "<group>"; };
 		57C703092353B6B8000D03BB /* TimerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
 		57ED449C2331DB0A00EBD511 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		57FD9E5C2358FB5C00E960BB /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewViewController.swift; path = WorkoutBuddy/ViewControllers/ReviewViewController.swift; sourceTree = SOURCE_ROOT; };
+		57FD9E5E2358FB8F00E960BB /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		80D0087A0E222C830EB09C7D /* Pods_WorkoutBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B6BE166959F8AA333690FB7 /* Pods-WorkoutBuddyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutBuddyTests.debug.xcconfig"; path = "Target Support Files/Pods-WorkoutBuddyTests/Pods-WorkoutBuddyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B6A201188C67C20FA28BBF99 /* Pods_WorkoutBuddyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutBuddyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +131,7 @@
 				57B8B3A6232F10B400401E81 /* ViewController.swift */,
 				57ED449C2331DB0A00EBD511 /* TimerViewController.swift */,
 				57C703072353B1E7000D03BB /* CustomExerciseViewController.swift */,
+				57FD9E5C2358FB5C00E960BB /* ReviewViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			children = (
 				57C703042352B47D000D03BB /* TextToSpeech.swift */,
 				57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */,
+				57FD9E5E2358FB8F00E960BB /* ExerciseTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,11 +371,13 @@
 			files = (
 				57C7030A2353B6B8000D03BB /* TimerPickerView.swift in Sources */,
 				57ED449D2331DB0A00EBD511 /* TimerViewController.swift in Sources */,
+				57FD9E5D2358FB5C00E960BB /* ReviewViewController.swift in Sources */,
 				5766BA3C23417CC40094682D /* TimerColourView.swift in Sources */,
 				570429522354E66E00CC2A79 /* RoundSecondaryButton.swift in Sources */,
 				5732B181233D845600478706 /* RoundPrimaryButton.swift in Sources */,
 				57B8B3C7233142E700401E81 /* Struct.swift in Sources */,
 				57B8B3C523313FB700401E81 /* WorkoutUserInput.swift in Sources */,
+				57FD9E5F2358FB8F00E960BB /* ExerciseTableViewCell.swift in Sources */,
 				57C703052352B47D000D03BB /* TextToSpeech.swift in Sources */,
 				57B8B3A7232F10B400401E81 /* ViewController.swift in Sources */,
 				57B8B3A5232F10B400401E81 /* AppDelegate.swift in Sources */,

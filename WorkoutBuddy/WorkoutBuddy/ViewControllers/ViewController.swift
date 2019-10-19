@@ -38,26 +38,26 @@ class ViewController: UIViewController {
         self.instructions1Label.text = "Number of exercises"
         
         self.stepsLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-        self.stepsLabel.text = "\(GlobalConstants.defaultSteps)"
+        self.stepsLabel.text = "\(GlobalConstants.defaultReps)"
        
         self.instructions2Label.font = UIFont.boldSystemFont(ofSize: 14.0)
         self.instructions2Label.text = "Time for each exercise"
         
         self.timeLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-        self.timeLabel.text = "0:\(GlobalConstants.minTimePerStep)"
+        self.timeLabel.text = "0:00"
        
         self.instructions3Label.font = UIFont.boldSystemFont(ofSize: 14.0)
         self.instructions3Label.text = "Time between each exercise"
         
         self.restTimeLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-        self.restTimeLabel.text = "0:\(GlobalConstants.minRestTime)0"
+        self.restTimeLabel.text = "0:00"
        
         //Sliders
-        self.timeSlider.minimumValue = Float(GlobalConstants.minTimePerStep)
-        self.timeSlider.maximumValue = Float(GlobalConstants.maxTimePerStep)
+        /*self.timeSlider.minimumValue = Float(GlobalConstants.minTimeInSeconds)
+        self.timeSlider.maximumValue = Float(GlobalConstants.maxTimeInSeconds)
         
-        self.restTimeSlider.minimumValue = Float(GlobalConstants.minRestTime)
-        self.restTimeSlider.maximumValue = Float(GlobalConstants.maxRestTime)
+        self.restTimeSlider.minimumValue = Float(GlobalConstants.minRestTimeInSeconds)
+        self.restTimeSlider.maximumValue = Float(GlobalConstants.maxRestTimeInSeconds)*/
         
         //Buttons
         startButton.setTitle("Start workout", for: .normal)
