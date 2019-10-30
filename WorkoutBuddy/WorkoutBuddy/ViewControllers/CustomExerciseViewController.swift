@@ -145,6 +145,7 @@ class CustomExerciseViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func addNextButtonClick(_ sender: RoundSecondaryButton) {
+        //Alert shown if user tries to add exercise with 0s duration
         if timerPickerView.getTotalSeconds() == 0 {
             let alert = UIAlertController(title: "Exercise incomplete", message: "Exercise duration must be longer than 0 seconds to continue", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))

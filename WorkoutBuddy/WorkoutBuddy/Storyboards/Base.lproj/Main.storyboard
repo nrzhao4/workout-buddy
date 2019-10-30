@@ -21,9 +21,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7K-1P-vBt" customClass="RoundPrimaryButton" customModule="WorkoutBuddy" customModuleProvider="target">
                                 <rect key="frame" x="100" y="597" width="175" height="30"/>
                                 <state key="normal" title="&lt;pause button&gt;"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="ZNO-lH-Ja1" eventType="touchUpInside" id="nRe-de-Rg6"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ll6-bM-kmJ">
                                 <rect key="frame" x="50" y="200" width="275" height="41"/>
@@ -62,10 +59,10 @@
                         <viewLayoutGuide key="safeArea" id="ZXh-fT-5vO"/>
                     </view>
                     <connections>
-                        <outlet property="doneButton" destination="4Lu-G4-gHf" id="v5y-bH-WuR"/>
-                        <outlet property="pauseButton" destination="L7K-1P-vBt" id="Llh-RW-1kO"/>
-                        <outlet property="timeLabel" destination="S12-hl-Jmy" id="2bh-sa-pCj"/>
-                        <outlet property="timerDescriptionLabel" destination="edj-o9-W7K" id="v44-0e-5Uc"/>
+                        <outlet property="doneButton" destination="L7K-1P-vBt" id="If3-Xp-7Xr"/>
+                        <outlet property="nameLabel" destination="edj-o9-W7K" id="DoJ-If-GQw"/>
+                        <outlet property="newWorkoutButton" destination="4Lu-G4-gHf" id="ou8-oO-BPx"/>
+                        <outlet property="timeLabel" destination="S12-hl-Jmy" id="w6v-Iv-000"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f64-5Q-VX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -203,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ffn-1E-I5c">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CELL_ID" rowHeight="90" id="MWx-Up-Mnx" customClass="ExerciseTableViewCell" customModule="WorkoutBuddy" customModuleProvider="target">
@@ -240,23 +237,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHd-XP-Maa" customClass="RoundPrimaryButton" customModule="WorkoutBuddy" customModuleProvider="target">
+                                <rect key="frame" x="164.5" y="607" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="ZNO-lH-Ja1" kind="presentation" identifier="TO_TIMER" id="MZi-rN-7O9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="IHd-XP-Maa" firstAttribute="centerX" secondItem="bxj-Ce-LC7" secondAttribute="centerX" id="9SX-qk-JeJ"/>
                             <constraint firstItem="xBV-zK-hf6" firstAttribute="trailing" secondItem="ffn-1E-I5c" secondAttribute="trailing" id="9s2-xB-1FT"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ffn-1E-I5c" secondAttribute="bottom" constant="50" id="FeV-TH-bTf"/>
+                            <constraint firstItem="xBV-zK-hf6" firstAttribute="bottom" secondItem="IHd-XP-Maa" secondAttribute="bottom" constant="30" id="Ili-an-QbP"/>
                             <constraint firstItem="ffn-1E-I5c" firstAttribute="top" secondItem="xBV-zK-hf6" secondAttribute="top" id="WIO-gh-zRY"/>
                             <constraint firstItem="ffn-1E-I5c" firstAttribute="leading" secondItem="xBV-zK-hf6" secondAttribute="leading" id="eZM-AZ-QOQ"/>
-                            <constraint firstItem="xBV-zK-hf6" firstAttribute="bottom" secondItem="ffn-1E-I5c" secondAttribute="bottom" id="qbe-Yv-Yiz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xBV-zK-hf6"/>
                     </view>
                     <connections>
                         <outlet property="reviewTable" destination="ffn-1E-I5c" id="9oQ-su-Sks"/>
+                        <outlet property="startButton" destination="IHd-XP-Maa" id="Yfw-Bi-iBS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbi-nX-jyH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1935" y="118"/>
+            <point key="canvasLocation" x="1933.5999999999999" y="117.39130434782609"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Uey-Se-1d9">

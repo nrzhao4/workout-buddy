@@ -13,6 +13,7 @@ class ReviewViewController: UIViewController, WorkoutDelegate {
     let CELL_ID = "CELL_ID"
 
     @IBOutlet weak var reviewTable: UITableView!
+    @IBOutlet weak var startButton: RoundPrimaryButton!
     
     var workout = [WorkoutUserInput]()
     
@@ -20,10 +21,18 @@ class ReviewViewController: UIViewController, WorkoutDelegate {
         super.viewDidLoad()
         reviewTable.delegate = self
         reviewTable.dataSource = self
+        startButton.setTitle("Start workout", for: .normal)
     }
     
     func workoutData(workoutExercises: [WorkoutUserInput]) {
         workout = workoutExercises
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TO_TIMER" {
+            let workoutReview = segue.destination as! TimerViewController
+            workoutReview.workoutData(workoutExercises: workout)
+        }
     }
 
 }
