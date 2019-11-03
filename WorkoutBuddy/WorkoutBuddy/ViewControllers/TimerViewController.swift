@@ -15,7 +15,7 @@ class TimerViewController: UIViewController, WorkoutDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var newWorkoutButton: RoundPrimaryButton!
-    @IBOutlet weak var doneButton: RoundPrimaryButton!
+    @IBOutlet weak var pauseButton: RoundPrimaryButton!
     
     //Data
     var workout = [WorkoutUserInput]()
@@ -27,9 +27,11 @@ class TimerViewController: UIViewController, WorkoutDelegate {
     var restsLeft = 0
     var repNumber = 1
     var restCompleted = false
+    var timerRunning = false
+    var isRestTimer = false
     
     //System sound ID
-    let soundID = 1008
+    //let soundID = 1008
     
     var timer: Timer?
     var restTimer: Timer?
@@ -41,12 +43,9 @@ class TimerViewController: UIViewController, WorkoutDelegate {
         super.viewDidLoad()
         timeLabel.font = UIFont(name: "Avenir", size: 60.0)
         
+        pauseButton.setTitle("Pause", for: .normal)
         newWorkoutButton.isEnabled = false
         newWorkoutButton.isHidden = true
-        
-        /*backgroundColour = TimerColourView(frame: CGRect.zero)
-        self.view.addSubview(backgroundColour)
-        self.view.sendSubviewToBack(backgroundColour)*/
 
         maxExerciseNumber = workout.count
         setUpTimer(exercise: workout[0])
@@ -72,20 +71,22 @@ class TimerViewController: UIViewController, WorkoutDelegate {
     }
     
     func runTimer() {
-        print("timer starting")
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timerRunning = true
+        isRestTimer = false
     }
     @objc func updateTimer() {
         timeLeft -= 1
         formatTimeLabel(time: timeLeft)
-        print("timer running")
         if timeLeft == 0 && restTime > 0 {
             timer?.invalidate()
+            timerRunning = false
             formatTimeLabel(time: restTime)
             runRestTime()
             nameLabel.text = "Rest"
         } else if timeLeft == 0 && restTime == 0 {
             timer?.invalidate()
+            timerRunning = false
             repsLeft -= 1
             if repsLeft > 0 {
                 //reset timer for current exercise
@@ -105,12 +106,15 @@ class TimerViewController: UIViewController, WorkoutDelegate {
     
     func runRestTime() {
         restTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateRestTime), userInfo: nil, repeats: true)
+        timerRunning = true
+        isRestTimer = true
     }
     @objc func updateRestTime() {
         restTime -= 1
         formatTimeLabel(time: restTime)
         if restTime == 0 {
             restTimer?.invalidate()
+            timerRunning = false
             repsLeft -= 1
             if repsLeft > 0 {
                 //reset timer for current exercise
@@ -155,17 +159,24 @@ class TimerViewController: UIViewController, WorkoutDelegate {
         newWorkoutButton.isEnabled = true
         newWorkoutButton.setTitle("Done", for: .normal)
         
-        doneButton.isEnabled = false
-        doneButton.isHidden = true
+        pauseButton.isEnabled = false
+        pauseButton.isHidden = true
     }
     
-    /*func animateBackground(time: Int) {
-        animator = UIViewPropertyAnimator(
-            duration: Double(time),
-            curve: .linear) {
-                print("animating")
-                self.backgroundColour.frame.size.width += self.backgroundColour.screenWidth
+    @IBAction func pauseButtonClick(_ sender: RoundPrimaryButton) {
+        if timerRunning == true {
+            timer?.invalidate()
+            restTimer?.invalidate()
+            pauseButton.setTitle("Resume", for: .normal)
+            timerRunning = false
+        } else if timerRunning == false {
+            if isRestTimer == true {
+                runRestTime()
+            } else {
+                runTimer()
+            }
+            pauseButton.setTitle("Pause", for: .normal)
+            timerRunning = true
         }
-        animator.startAnimation()
-    }*/
+    }
 }

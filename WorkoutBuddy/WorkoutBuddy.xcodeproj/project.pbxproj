@@ -159,12 +159,11 @@
 		57B8B3A3232F10B400401E81 /* WorkoutBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				57B8B3A4232F10B400401E81 /* AppDelegate.swift */,
 				5766BA3923417C800094682D /* Views */,
 				5766BA3A23417C840094682D /* ViewControllers */,
 				57C703062352B487000D03BB /* Models */,
 				5766BA3823417C630094682D /* Storyboards */,
-				57B8B3A4232F10B400401E81 /* AppDelegate.swift */,
-				57B8B3C6233142E700401E81 /* Struct.swift */,
 				5732B182233DCCBA00478706 /* CustomUI */,
 				57B8B3AB232F10B500401E81 /* Assets.xcassets */,
 				57B8B3AD232F10B500401E81 /* LaunchScreen.storyboard */,
@@ -185,6 +184,7 @@
 		57C703062352B487000D03BB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				57B8B3C6233142E700401E81 /* Struct.swift */,
 				57C703042352B47D000D03BB /* TextToSpeech.swift */,
 				57B8B3C423313FB700401E81 /* WorkoutUserInput.swift */,
 				57FD9E5E2358FB8F00E960BB /* ExerciseTableViewCell.swift */,
