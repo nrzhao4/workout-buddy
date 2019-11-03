@@ -21,7 +21,7 @@ class TimerColourView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        startTimerBackground(isRestTime: true)
+        self.backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,6 +45,7 @@ class TimerColourView: UIView {
         frame.size.width = CGFloat(width)
         frame.size.height = UIScreen.main.bounds.height
     }
+    
     //Deprecated
     /*
      
